@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const school = {
+            name:'襄州一中',
+            pos : ['襄阳','襄樊'],
+            founder:{
+                name : 'zf'
+            },
+            change:function () {
+                console.log('函数');
+            }
+        }
+
+        //创建容器
+        const newSchool = {};
+        //属性 ----基本数据类型
+        newSchool.name = school.name;
+        //数组 ----引用数据类型
+        newSchool.pos = [];
+        newSchool.pos[0] = school.pos[0];
+        newSchool.pos[1] = school.pos[1];
+        //对象 ----引用数据类型
+        newSchool.founder = {};
+        newSchool.founder.name = school.founder.name;
+        //方法
+        newSchool.change = school.change.bind(newSchool);
+
+        newSchool.pos[0] = 'xiangyang';
+        console.log(school);        //pos: (2) ['襄阳', '襄樊']
+        console.log(newSchool);     //pos: (2) ['xiangyang', '襄樊']
+
+    </script>
+</body>
+</html>

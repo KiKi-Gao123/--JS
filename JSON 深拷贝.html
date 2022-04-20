@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //JSON实现深拷贝
+        // # stringify 将JS对象转换成JSON格式的字符串
+        // # parse      将JSON格式的字符串转换成JS对象
+        const school = {
+            name:'襄州一中',
+            pos : ['襄阳','襄樊'],
+            founder:{
+                name : 'zf'
+            }
+        }
+        //将JS对象转成JSON格式的字符串
+        let str = JSON.stringify(school);
+        //将JSON格式的字符串转换成JS对象
+        let newSchool = JSON.parse(str);
+        newSchool.pos[0] = 'xiangyang';
+        console.log(school);    //pos: (2) ['襄阳', '襄樊']
+        console.log(newSchool); //pos: (2) ['xiangyang', '襄樊']
+    </script>
+</body>
+</html>

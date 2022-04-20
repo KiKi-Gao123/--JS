@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //拷贝：复制 数组和对象
+        //浅拷贝
+        let arr = [1,2,3,4];
+        let newArr = arr;
+        newArr[0] = 521;
+        console.log(arr);     //[521, 2, 3, 4]
+        console.log(newArr);  //[521, 2, 3, 4]
+
+        //数组：
+        //concat
+        let arr1 = [{name:'gq'},2,3,4];
+        let newArr1 = [].concat(arr1);
+        newArr1[0].name = 'zf';
+        console.log(arr1);    //0: {name: 'zf'}
+        console.log(newArr1); //0: {name: 'zf'}
+
+        //slice
+        let arr2 = [{name:'gq'},2,3,4];
+        let newArr2 = arr2.slice(0);
+        newArr2[0].name = 'zf';
+        console.log(arr2);    //0: {name: 'zf'}
+        console.log(newArr2);  //0: {name: 'zf'}
+
+        //扩展运算符...
+        let arr3 = [{name:'gq'},2,3,4];
+        let newArr3 = [...arr3];
+        newArr3[0].name = 'zf';
+        console.log(arr3);
+        console.log(newArr3);
+
+        //对象：
+        //assign方法 ：合并对象，并返回新对象
+        const school = {
+            name:'襄州一中',
+            pos : ['襄阳','襄樊']
+        }
+        const newSchool = Object.assign({},school);
+        newSchool.pos[0] = 'xiangyang';
+
+        console.log(school);   //pos: (2) ['xiangyang', '襄樊']
+        console.log(newSchool);  //pos: (2) ['xiangyang', '襄樊']
+    </script>
+</body>
+</html>

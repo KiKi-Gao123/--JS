@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //封装一个函数
+        function deepClone(data) {
+            //创建一个容器
+            let container ;
+            //判断
+            let type = getDataType(data);
+            if(type === 'Object'){
+                container = {};
+            }
+            if(type === 'Array'){
+                container = [];
+            }
+            //遍历数据for in
+            for(let i in data){
+                let type = getDataType(data[i]);
+                if(type === 'Object' || type === 'Array'){
+                     container[i] = deepClone(data[i]);
+                }else{
+                     container[i] = data[i];
+                }
+            }
+
+            return container;
+            
+        }
+         //封装一个函数来获取data的类型
+         function getDataType(data) {
+           return  Object.prototype.toString.call(data).slice(8,-1);
+        }
+        //原对象
+        const school = {
+            name:'襄州一中',
+            pos : ['襄阳','襄樊'],
+            founder:{
+                name : 'zf'
+            },
+            change:function () {
+                console.log('函数');
+            }
+            
+        }
+        //拷贝对象
+        const newSchool = deepClone(school);
+        newSchool.pos[0] = 'xiangyang';
+        console.log(school);   //pos: (2) ['襄阳', '襄樊']
+        console.log(newSchool);  //pos: (2) ['xiangyang', '襄樊']
+       
+    </script>
+</body>
+</html>
